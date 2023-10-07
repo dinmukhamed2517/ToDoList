@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">todolist</string>
+    <string name="click_to_start_todo">Click to start Todo</string>
+</resources>
