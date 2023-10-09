@@ -32,7 +32,6 @@ class ToDoListAdapter: ListAdapter<ToDoItem, ToDoListAdapter.ViewHolder>(ToDoLis
     }
 
 
-
     inner class ViewHolder(
         private val binding:ItemToDoBinding
     ): RecyclerView.ViewHolder(binding.root){
@@ -53,6 +52,9 @@ class ToDoListAdapter: ListAdapter<ToDoItem, ToDoListAdapter.ViewHolder>(ToDoLis
             }
             binding.root.setOnClickListener{
                 onToDoItemClicked?.invoke(toDoItem)
+            }
+
+            binding.todoTitle.setOnClickListener {
             }
 
 

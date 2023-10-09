@@ -4,10 +4,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
+import kz.just_code.todolist.R
 import kz.just_code.todolist.adapter.ToDoListAdapter
 import kz.just_code.todolist.databinding.FragmentMainBinding
+import kz.just_code.todolist.fragments.DetailsFragment
 import kz.just_code.todolist.model.ToDoItem
 
 class MainFragment: Fragment() {
@@ -55,6 +58,9 @@ class MainFragment: Fragment() {
 
         toDoListAdapter?.onToDoItemClicked = { toDoItem ->
             updateToDoItem(toDoItem)
+            requireActivity().supportFragmentManager.commit {
+                replace(R.id.container, DetailsFragment())
+            }
         }
         submitList(items)
 
