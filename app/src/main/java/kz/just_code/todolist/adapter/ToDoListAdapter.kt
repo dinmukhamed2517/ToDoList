@@ -14,10 +14,7 @@ import kz.just_code.todolist.diffutil.ToDoListDiffUtilCallback
 import kz.just_code.todolist.fragments.DetailsFragment
 import kz.just_code.todolist.model.ToDoItem
 
-class ToDoListAdapter(
-    private var toDoItems:List<ToDoItem>,
-    private val onItemClicked: (ToDoItem) -> Unit
-): ListAdapter<ToDoItem, ToDoListAdapter.ViewHolder>(ToDoListDiffUtilCallback()) {
+class ToDoListAdapter: ListAdapter<ToDoItem, ToDoListAdapter.ViewHolder>(ToDoListDiffUtilCallback()) {
 
     var onToDoItemClicked: ((ToDoItem) -> Unit)? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -31,16 +28,9 @@ class ToDoListAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        (holder as ToDoListAdapter.ViewHolder).bind(toDoItems[position])
+        holder.bind(getItem(position))
     }
 
-    fun setItems(toDoItems: List<ToDoItem>){
-        this.toDoItems = toDoItems
-    }
-
-    override fun getItemCount(): Int {
-        return toDoItems.size
-    }
 
 
     inner class ViewHolder(

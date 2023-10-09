@@ -49,16 +49,14 @@ class MainFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        toDoListAdapter = ToDoListAdapter(
-            toDoItems = items
-        ).apply {
-            onToDoItemClicked = { toDoItem ->
-                updateToDoItem(toDoItem)
-            }
-        }
+        toDoListAdapter = ToDoListAdapter()
         binding.toDoList.adapter = toDoListAdapter
         binding.toDoList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        binding.toDoList.itemAnimator = null
+
+        toDoListAdapter?.onToDoItemClicked = { toDoItem ->
+            updateToDoItem(toDoItem)
+        }
+        submitList(items)
 
     }
     private fun updateToDoItem(toDoItem:ToDoItem){
